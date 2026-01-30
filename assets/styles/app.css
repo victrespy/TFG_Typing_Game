@@ -1,3 +1,68 @@
 body {
-    background-color: skyblue;
+    font-family: 'VT323', monospace;
+    color: #000;
+    image-rendering: pixelated;
+    user-select: none; /* Evita selección de texto accidental al jugar */
+}
+
+/* Permite que los clics atraviesen el efecto de scanlines */
+.scanlines::before, .scanlines::after {
+    pointer-events: none;
+}
+
+/* Animaciones */
+@keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+.fade-in { animation: fadeIn 0.5s ease-out forwards; }
+
+/* Glitch effect suave */
+.glitch-text span { display: inline-block; }
+.glitch-char { color: #EEEFE0; text-shadow: 2px 0 #000, -2px 0 #A7C1A8; }
+
+/* Custom Scrollbar Pixel */
+.custom-scroll::-webkit-scrollbar { width: 12px; background: #819A91; border-left: 2px solid #000; }
+.custom-scroll::-webkit-scrollbar-thumb { background: #D1D8BE; border: 2px solid #000; }
+.custom-scroll::-webkit-scrollbar-thumb:hover { background: #EEEFE0; }
+
+.screen { display: none; }
+.screen.active { display: flex; }
+
+/* Pixel Borders Utility */
+.pixel-box {
+    border: 4px solid #000;
+    box-shadow: 4px 4px 0px 0px rgba(0,0,0,0.2);
+    background-color: #D1D8BE; /* p-light default */
+}
+
+.pixel-btn {
+    border: 4px solid #000;
+    position: relative;
+    transition: all 0.1s;
+    box-shadow: 0 4px 0 #000;
+    background-color: #D1D8BE; /* p-light */
+    color: #000;
+    text-transform: uppercase;
+    cursor: pointer;
+}
+.pixel-btn:active {
+    transform: translateY(4px);
+    box-shadow: 0 0 0 #000;
+}
+.pixel-btn:hover {
+    background-color: #EEEFE0; /* p-pale */
+}
+
+/* Scanline effect */
+.scanlines {
+    background: linear-gradient(to bottom, rgba(255,255,255,0), rgba(255,255,255,0) 50%, rgba(0,0,0,0.05) 50%, rgba(0,0,0,0.05));
+    background-size: 100% 4px;
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    pointer-events: none;
+    z-index: 99;
+}
+
+/* Estilo especial para Lore */
+.lore-text {
+    line-height: 1.2;
+    text-shadow: 1px 1px 0 rgba(255,255,255,0.5);
 }

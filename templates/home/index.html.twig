@@ -1,0 +1,21 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Home{% endblock %}
+
+{% block body %}
+<section class="flex flex-col items-center justify-center min-h-screen gap-8">
+    <h1 class="text-6xl font-black text-p-pale tracking-widest drop-shadow-[4px_4px_0_#000] fade-in">UP IN THE TOWER</h1>
+
+    <div class="grid grid-cols-1 gap-3 w-full max-w-xs md:max-w-sm">
+        <button class="pixel-btn px-6 py-4 font-bold text-xl tracking-wider">
+            INICIAR JUEGO
+        </button>
+        <button class="pixel-btn px-6 py-4 font-bold text-xl tracking-wider">
+            OPCIONES
+        </button>
+        <button class="pixel-btn px-6 py-4 font-bold text-xl tracking-wider" onclick="location.href='{{ path('app_user_index') }}'">
+            PERFIL
+        </button>
+    </div>
+</section>
+{% endblock %}
